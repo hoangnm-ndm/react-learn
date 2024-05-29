@@ -1,10 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Dashboard = ({ data }) => {
 	console.log(data);
 	return (
 		<div>
 			<h1>Hello, admin</h1>
+			<Link to="/admin/product-add" className="btn btn-primary">
+				Add new product
+			</Link>
 			<table className="table table-bordered table-striped text-center">
 				<thead>
 					<tr>
@@ -22,10 +26,8 @@ const Dashboard = ({ data }) => {
 							<td>{p.id}</td>
 							<td>{p.title}</td>
 							<td>{p.price}</td>
-							<td>{p.description}</td>
-							<td>
-								<img src={p.thumbnail} alt="" />
-							</td>
+							<td>{p.description || "Dang cap nhat"}</td>
+							<td>{p.thumbnail ? <img src={p.thumbnail} alt="Dang cap nhat" /> : "Dang cap nhat"}</td>
 							<td>
 								<button className="btn btn-danger">Delete</button>
 								<button className="btn btn-warning">Edit</button>
