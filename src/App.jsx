@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import "./App.scss";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Notfound from "./pages/Notfound";
 import instance from "./axios";
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -30,6 +31,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home data={products} />} />
 					<Route path="/home" element={<Navigate to="/" />} />
+					<Route path="/product-detail/:id" element={<ProductDetail />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="*" element={<Notfound />} />
