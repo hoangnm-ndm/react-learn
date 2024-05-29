@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Notfound from "./pages/Notfound";
 import instance from "./axios";
 import ProductDetail from "./pages/ProductDetail";
+import Dashboard from "./pages/admin/Dashboard";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -34,6 +35,7 @@ function App() {
 					<Route path="/product-detail/:id" element={<ProductDetail />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/admin" element={<Dashboard data={products} />} />
 					<Route path="*" element={<Notfound />} />
 				</Routes>
 			</main>
