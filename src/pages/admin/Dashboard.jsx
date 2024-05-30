@@ -30,7 +30,9 @@ const Dashboard = ({ data }) => {
 							<td>{p.thumbnail ? <img src={p.thumbnail} alt="Dang cap nhat" /> : "Dang cap nhat"}</td>
 							<td>
 								<button className="btn btn-danger">Delete</button>
-								<button className="btn btn-warning">Edit</button>
+								<Link to={`/admin/product-edit/${p.id}`} className="btn btn-warning">
+									Edit
+								</Link>
 							</td>
 						</tr>
 					))}

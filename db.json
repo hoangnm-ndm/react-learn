@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "title": "iPhone 9",
+      "title": "iPhone 100",
       "description": "An apple mobile which is nothing like apple",
       "price": 549,
       "discountPercentage": 12.96,
@@ -21,7 +21,7 @@
     },
     {
       "id": 2,
-      "title": "iPhone X",
+      "title": "iPhone XX",
       "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
       "price": 899,
       "discountPercentage": 17.94,
@@ -39,7 +39,7 @@
     },
     {
       "id": 3,
-      "title": "Samsung Universe 9",
+      "title": "Samsung Universe 1000",
       "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
       "price": 1249,
       "discountPercentage": 15.46,
@@ -569,6 +569,27 @@
       "price": 2000,
       "description": "",
       "id": 33
+    },
+    {
+      "title": "sd23232sds23232",
+      "price": 232323,
+      "description": "2323232",
+      "id": 34
+    },
+    {
+      "title": "hoang",
+      "price": 200,
+      "description": "mo ta",
+      "id": 35
+    },
+    {
+      "title": "wewew2323232332",
+      "price": 2232,
+      "description": "323232",
+      "id": 36
+    },
+    {
+      "id": 37
     }
   ]
 }
