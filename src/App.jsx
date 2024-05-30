@@ -12,6 +12,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Dashboard from "./pages/admin/Dashboard";
 import ProductAdd from "./pages/admin/ProductAdd";
 import ProductEdit from "./pages/admin/ProductEdit";
+import ProductForm from "./pages/admin/ProductForm";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -60,6 +61,28 @@ function App() {
 		})();
 	};
 
+	const handleSubmitForm = (data) => {
+		(async () => {
+			try {
+				if (data.id) {
+					// logic cho edit product
+					await instance.patch(`/products/${data.id}`, data);
+					const newData = await getProducts();
+					setProducts(newData);
+				} else {
+					// logic cho add product
+					const res = await instance.post("/products", data);
+					setProducts([...products, res.data]);
+				}
+				if (confirm("Successfully, redirect to admin page!")) {
+					navigate("/admin");
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		})();
+	};
+
 	return (
 		<>
 			<Header />
@@ -71,8 +94,11 @@ function App() {
 					<Route path="/about" element={<About />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/admin" element={<Dashboard data={products} />} />
-					<Route path="/admin/product-add" element={<ProductAdd onAdd={handleSubmit} />} />
-					<Route path="/admin/product-edit/:id" element={<ProductEdit onEdit={handleSubmitEdit} />} />
+					{/* <Route path="/admin/product-add" element={<ProductAdd onAdd={handleSubmit} />} />
+					<Route path="/admin/product-edit/:id" element={<ProductEdit onEdit={handleSubmitEdit} />} /> */}
+					<Route path="/admin/product-form" element={<ProductForm onProduct={handleSubmitForm} />} />
+					<Route path="/admin/product-form/:id" element={<ProductForm onProduct={handleSubmitForm} />} />
+
 					<Route path="*" element={<Notfound />} />
 				</Routes>
 			</main>
