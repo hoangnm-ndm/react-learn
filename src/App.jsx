@@ -13,6 +13,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import ProductAdd from "./pages/admin/ProductAdd";
 import ProductEdit from "./pages/admin/ProductEdit";
 import ProductForm from "./pages/admin/ProductForm";
+import Register from "./pages/Register";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -83,6 +84,21 @@ function App() {
 		})();
 	};
 
+	const handleRemove = (id) => {
+		console.log(id);
+		(async () => {
+			try {
+				if (confirm("Are yout sure?")) {
+					await instance.delete(`/products/${id}`);
+					const newData = products.filter((item) => item.id !== id && item);
+					setProducts(newData);
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		})();
+	};
+
 	return (
 		<>
 			<Header />
@@ -92,13 +108,13 @@ function App() {
 					<Route path="/home" element={<Navigate to="/" />} />
 					<Route path="/product-detail/:id" element={<ProductDetail />} />
 					<Route path="/about" element={<About />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/admin" element={<Dashboard data={products} />} />
+					<Route path="/admin" element={<Dashboard data={products} remove={handleRemove} />} />
 					{/* <Route path="/admin/product-add" element={<ProductAdd onAdd={handleSubmit} />} />
 					<Route path="/admin/product-edit/:id" element={<ProductEdit onEdit={handleSubmitEdit} />} /> */}
 					<Route path="/admin/product-form" element={<ProductForm onProduct={handleSubmitForm} />} />
 					<Route path="/admin/product-form/:id" element={<ProductForm onProduct={handleSubmitForm} />} />
-
+					<Route path="/register" element={<Register />} />
+					<Route path="/login" element={<Login />} />
 					<Route path="*" element={<Notfound />} />
 				</Routes>
 			</main>
