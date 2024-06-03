@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Home({ data }) {
+	console.log("!1");
+	console.log(data);
 	return (
 		<>
 			<h1>Danh sach san pham</h1>

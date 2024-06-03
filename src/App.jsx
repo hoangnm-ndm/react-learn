@@ -69,19 +69,18 @@ function App() {
 		<>
 			<main>
 				<Routes>
-					<Route path="/" element={<LayoutClient />}>
-						<Route index element={<Home data={products} />} />
-						<Route path="/home" element={<Navigate to="/" />} />
-						<Route path="/product-detail/:id" element={<ProductDetail />} />
-						<Route path="/about" element={<About />} />
-					</Route>
+					{/* path for client */}
+					<Route index element={<Home data={products} />} />
+					<Route path="/home" element={<Navigate to="/" />} />
+					<Route path="/product-detail/:id" element={<ProductDetail />} />
+					<Route path="/about" element={<About />} />
 
-					<Route path="/admin" element={<LayoutAdmin />}>
-						<Route path="/admin" element={<Dashboard data={products} remove={handleRemove} />} />
-						<Route path="/admin/product-form" element={<ProductForm onProduct={handleSubmitForm} />} />
-						<Route path="/admin/product-form/:id" element={<ProductForm onProduct={handleSubmitForm} />} />
-					</Route>
+					{/* path for admin */}
+					<Route path="/admin" element={<Dashboard data={products} remove={handleRemove} />} />
+					<Route path="/admin/product-form" element={<ProductForm onProduct={handleSubmitForm} />} />
+					<Route path="/admin/product-form/:id" element={<ProductForm onProduct={handleSubmitForm} />} />
 
+					{/* path empty */}
 					<Route path="/register" element={<Register />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="*" element={<Notfound />} />
