@@ -1,7 +1,7 @@
 import React from "react";
 import ProductItem from "../components/ProductItem";
 
-function Home({ data, key }) {
+function Home({ data }) {
 	return (
 		<>
 			<h1>Danh sach san pham</h1>

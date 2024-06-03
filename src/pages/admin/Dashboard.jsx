@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 
 const Dashboard = ({ data, remove }) => {
 	console.log(data);
-
-	// const remove = (id) => {
-	// 	console.log(id);
-	// };
 	return (
 		<div>
 			<h1>Hello, admin</h1>

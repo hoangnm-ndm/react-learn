@@ -14,7 +14,9 @@ const ProductItem = ({ data }) => {
 				</Link>
 				<p>${data.price}</p>
 				<p>{data.description}</p>
-				<Button className="btn btn-danger">Add to cart</Button>
+				<Button className="btn btn-danger" width="100%">
+					Add to cart
+				</Button>
 			</div>
 		</div>
 	);

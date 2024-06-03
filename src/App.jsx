@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.scss";
 import instance, { getProducts } from "./axios";
-import LayoutAdmin from "./layouts/LayoutAdmin";
-import LayoutClient from "./layouts/LayoutClient";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import About from "./pages/About";
 import Dashboard from "./pages/admin/Dashboard";
 import ProductForm from "./pages/admin/ProductForm";
@@ -12,8 +12,6 @@ import Login from "./pages/Login";
 import Notfound from "./pages/Notfound";
 import ProductDetail from "./pages/ProductDetail";
 import Register from "./pages/Register";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -66,7 +64,7 @@ function App() {
 			}
 		})();
 	};
-
+	console.log(<Header />);
 	return (
 		<>
 			<Header />
