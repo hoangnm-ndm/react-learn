@@ -3,6 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import authSchema from "../schemaValid/authSchema";
 import instance from "../axios";
+import Button from "../components/Button";
 
 const Register = () => {
 	const {
@@ -45,6 +46,7 @@ const Register = () => {
 					<button className="btn btn-primary w-100" type="submit">
 						Register
 					</button>
+					<Button width="100%">Register</Button>
 				</div>
 			</form>
 		</div>

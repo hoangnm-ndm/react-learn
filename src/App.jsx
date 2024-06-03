@@ -12,6 +12,8 @@ import Login from "./pages/Login";
 import Notfound from "./pages/Notfound";
 import ProductDetail from "./pages/ProductDetail";
 import Register from "./pages/Register";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -67,6 +69,7 @@ function App() {
 
 	return (
 		<>
+			<Header />
 			<main>
 				<Routes>
 					{/* path for client */}
@@ -86,6 +89,8 @@ function App() {
 					<Route path="*" element={<Notfound />} />
 				</Routes>
 			</main>
+
+			<Footer />
 		</>
 	);
 }

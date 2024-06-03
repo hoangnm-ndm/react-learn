@@ -1,9 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import productSchema from "../../schemaValid/productSchema";
-import instance from "../../axios";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import productSchema from "../../schemaValid/productSchema";
+import { useForm } from "react-hook-form";
 
 const ProductForm = ({ onProduct }) => {
 	const { id } = useParams();
