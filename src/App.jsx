@@ -11,7 +11,7 @@ import instance, { getProducts } from "./axios";
 import ProductDetail from "./pages/ProductDetail";
 import Dashboard from "./pages/admin/Dashboard";
 import ProductAdd from "./pages/admin/ProductAdd";
-import ProductEdit from "./pages/admin/ProductEdit";
+import Register from "./pages/Register";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -69,6 +69,7 @@ function App() {
 					<Route path="/home" element={<Navigate to="/" />} />
 					<Route path="/product-detail/:id" element={<ProductDetail />} />
 					<Route path="/about" element={<About />} />
+					<Route path="/register" element={<Register />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/admin" element={<Dashboard data={products} />} />
 					<Route path="/admin/product-add" element={<ProductAdd onAdd={handleSubmit} />} />

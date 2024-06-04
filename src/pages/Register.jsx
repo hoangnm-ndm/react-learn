@@ -10,7 +10,7 @@ const schema = z.object({
 	password: z.string().min(6),
 });
 
-const Login = () => {
+const Register = () => {
 	const nav = useNavigate();
 	const {
 		register,
@@ -21,21 +21,20 @@ const Login = () => {
 		console.log(data);
 		(async () => {
 			try {
-				const res = await instance.post(`/login`, data);
-				localStorage.setItem("user", JSON.stringify(res.data));
-				if (confirm("Successfully, redirect to home page?")) {
-					nav("/");
+				await instance.post(`/register`, data);
+				if (confirm("Successfully, redirect to login page?")) {
+					nav("/login");
 				}
 			} catch (error) {
 				console.log(error);
-				alert(error.response.data || "Login failed");
+				alert(error.response.data || "Register failed");
 			}
 		})();
 	};
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<h1>Login</h1>
+				<h1>Register</h1>
 				<div className="mb-3">
 					<label htmlFor="email" className="form-label">
 						email
@@ -62,4 +61,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default Register;

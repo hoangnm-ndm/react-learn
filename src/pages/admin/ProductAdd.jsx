@@ -12,7 +12,6 @@ const ProductAdd = ({ onAdd }) => {
 		resolver: zodResolver(productSchema),
 	});
 	const onSubmit = (data) => {
-		console.log(data);
 		onAdd(data);
 	};
 	return (

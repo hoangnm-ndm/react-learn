@@ -591,5 +591,17 @@
     {
       "id": 37
     }
+  ],
+  "users": [
+    {
+      "email": "hoang@gmail.com",
+      "password": "$2a$10$ZoYrwhQfWDmequFLoamvROO2Y7PJF0d15PwVhCBec4hU5MJNrwyZ2",
+      "id": 1
+    },
+    {
+      "email": "hoang1@gmail.com",
+      "password": "$2a$10$76JqqoGWbnjVO/UBtqGVbOupYp.p4dUu3uARMshfoGZyAOPR8C752",
+      "id": 2
+    }
   ]
 }
