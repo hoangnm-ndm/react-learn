@@ -72,7 +72,6 @@ function App() {
 					<Route path="/login" element={<Login />} />
 					<Route path="/admin" element={<Dashboard data={products} />} />
 					<Route path="/admin/product-add" element={<ProductAdd onAdd={handleSubmit} />} />
-					<Route path="/admin/product-edit/:id" element={<ProductEdit onEdit={handleSubmitEdit} />} />
 					<Route path="*" element={<Notfound />} />
 				</Routes>
 			</main>
