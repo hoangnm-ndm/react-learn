@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Notfound from "./pages/Notfound";
 import ProductDetail from "./pages/ProductDetail";
 import Register from "./pages/Register";
+import AuthForm from "./pages/AuthForm";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -64,7 +65,6 @@ function App() {
 			}
 		})();
 	};
-	console.log(<Header />);
 	return (
 		<>
 			<Header />
@@ -82,8 +82,10 @@ function App() {
 					<Route path="/admin/product-form/:id" element={<ProductForm onProduct={handleSubmitForm} />} />
 
 					{/* path empty */}
-					<Route path="/register" element={<Register />} />
-					<Route path="/login" element={<Login />} />
+					{/* <Route path="/register" element={<Register />} />
+					<Route path="/login" element={<Login />} /> */}
+					<Route path="/register" element={<AuthForm isRegister />} />
+					<Route path="/login" element={<AuthForm />} />
 					<Route path="*" element={<Notfound />} />
 				</Routes>
 			</main>

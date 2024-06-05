@@ -545,6 +545,17 @@
       "email": "thayhoang@gmail.com",
       "password": "$2a$10$kiFEegaDponN0eMnm5CM/O1wRMLAiFpjoUUNAFppEA/TlpaxbI7wa",
       "id": 1
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$rRqRoTl0.Iw3ltU1oWtGYOqye7JvIIRaAw.qi2tR0AFqwNOnrCF5O",
+      "id": 2
+    },
+    {
+      "email": "hoangnm@gmail.com",
+      "password": "$2a$10$qRALe.3LNggZAUcJGwjGoe1ZYTjyspJN3aQGKVRDKU1Svjw27bjAy",
+      "confirmPass": "111111",
+      "id": 3
     }
   ]
 }
