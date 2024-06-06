@@ -13,6 +13,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import ProductAdd from "./pages/admin/ProductAdd";
 import Register from "./pages/Register";
 import ProductEdit from "./pages/admin/ProductEdit";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -78,9 +79,14 @@ function App() {
 					<Route path="/about" element={<About />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/login" element={<Login />} />
-					<Route path="/admin" element={<Dashboard data={products} removeProduct={removeProduct} />} />
-					<Route path="/admin/product-add" element={<ProductAdd onAdd={handleSubmit} />} />
-					<Route path="/admin/product-edit/:id" element={<ProductEdit onEdit={handleSubmitEdit} />} />
+
+					{/* Private route for admin */}
+					<Route path="/admin" element={<PrivateRoute />}>
+						<Route path="/admin" element={<Dashboard data={products} removeProduct={removeProduct} />} />
+						<Route path="/admin/product-add" element={<ProductAdd onAdd={handleSubmit} />} />
+						<Route path="/admin/product-edit/:id" element={<ProductEdit onEdit={handleSubmitEdit} />} />
+					</Route>
+
 					<Route path="*" element={<Notfound />} />
 				</Routes>
 			</main>
