@@ -1,21 +1,30 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import productSchema from "../../schemaValid/productSchema";
+import { useParams } from "react-router-dom";
+import instance from "../../axios";
 
-const ProductAdd = ({ onAdd }) => {
+const ProductEdit = ({ onEdit }) => {
+	const { id } = useParams();
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm({
 		resolver: zodResolver(productSchema),
 	});
-
+	useEffect(() => {
+		(async () => {
+			const res = await instance.get(`/products/${id}`);
+			reset(res.data);
+		})();
+	}, []);
 	return (
 		<div>
-			<form onSubmit={handleSubmit((data) => onAdd(data))}>
-				<h1>Product Add</h1>
+			<form onSubmit={handleSubmit((data) => onEdit({ ...data, id }))}>
+				<h1>Product Edit</h1>
 				<div className="mb-3">
 					<label htmlFor="title" className="form-label">
 						Title
@@ -44,7 +53,7 @@ const ProductAdd = ({ onAdd }) => {
 				</div>
 				<div className="mb-3">
 					<button className="btn btn-primary w-100" type="submit">
-						Add Product
+						Edit Product
 					</button>
 				</div>
 			</form>
@@ -52,4 +61,4 @@ const ProductAdd = ({ onAdd }) => {
 	);
 };
 
-export default ProductAdd;
+export default ProductEdit;
