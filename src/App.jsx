@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Notfound from "./pages/Notfound";
-import instance, { getProducts } from "./axios";
+import instance from "./axios";
 import ProductDetail from "./pages/ProductDetail";
 import Dashboard from "./pages/admin/Dashboard";
 import ProductAdd from "./pages/admin/ProductAdd";
@@ -47,9 +47,9 @@ function App() {
 	const handleSubmitEdit = (data) => {
 		(async () => {
 			try {
-				const res = await instance.patch(`/products/${data.id}`, data);
-				const newDatas = await instance.get(`/products`);
-				setProducts(newDatas.data);
+				await instance.patch(`/products/${data.id}`, data);
+				const res = await instance.get("/products");
+				setProducts(res.data);
 				if (confirm("Add product successfully, redirect to admin page!")) {
 					navigate("/admin");
 				}
@@ -57,6 +57,14 @@ function App() {
 				console.log(error);
 			}
 		})();
+	};
+
+	const removeProduct = async (id) => {
+		if (confirm("Are you sure?")) {
+			await instance.delete(`/products/${id}`);
+			const newData = products.filter((item) => item.id !== id && item);
+			setProducts(newData);
+		}
 	};
 
 	return (
@@ -70,7 +78,7 @@ function App() {
 					<Route path="/about" element={<About />} />
 					<Route path="/register" element={<Register />} />
 					<Route path="/login" element={<Login />} />
-					<Route path="/admin" element={<Dashboard data={products} />} />
+					<Route path="/admin" element={<Dashboard data={products} removeProduct={removeProduct} />} />
 					<Route path="/admin/product-add" element={<ProductAdd onAdd={handleSubmit} />} />
 					<Route path="/admin/product-edit/:id" element={<ProductEdit onEdit={handleSubmitEdit} />} />
 					<Route path="*" element={<Notfound />} />
