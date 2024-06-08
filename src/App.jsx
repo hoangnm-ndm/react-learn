@@ -11,6 +11,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import Home from "./pages/Home";
 import Notfound from "./pages/Notfound";
 import ProductDetail from "./pages/ProductDetail";
+import PrivateRouter from "./components/PrivateRouter";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -57,9 +58,13 @@ function App() {
 					<Route path="/about" element={<About />} />
 					<Route path="/register" element={<AuthForm isRegister />} />
 					<Route path="/login" element={<AuthForm />} />
-					<Route path="/admin" element={<Dashboard data={products} />} />
-					<Route path="/admin/product-add" element={<ProductForm onSubmit={handleProduct} />} />
-					<Route path="/admin/product-edit/:id" element={<ProductForm onSubmit={handleProduct} />} />
+
+					<Route path="/admin" element={<PrivateRouter />}>
+						<Route path="/admin" element={<Dashboard data={products} />} />
+						<Route path="/admin/product-add" element={<ProductForm onSubmit={handleProduct} />} />
+						<Route path="/admin/product-edit/:id" element={<ProductForm onSubmit={handleProduct} />} />
+					</Route>
+
 					<Route path="*" element={<Notfound />} />
 				</Routes>
 			</main>
