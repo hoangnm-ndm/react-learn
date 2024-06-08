@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.scss";
 import instance, { getProducts } from "./axios";
+import AuthForm from "./components/AuthForm";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import About from "./pages/About";
 import Dashboard from "./pages/admin/Dashboard";
 import ProductForm from "./pages/admin/ProductForm";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
 import Notfound from "./pages/Notfound";
 import ProductDetail from "./pages/ProductDetail";
-import Register from "./pages/Register";
-import AuthForm from "./pages/AuthForm";
 
 function App() {
 	const [products, setProducts] = useState([]);
@@ -82,8 +80,6 @@ function App() {
 					<Route path="/admin/product-form/:id" element={<ProductForm onProduct={handleSubmitForm} />} />
 
 					{/* path empty */}
-					{/* <Route path="/register" element={<Register />} />
-					<Route path="/login" element={<Login />} /> */}
 					<Route path="/register" element={<AuthForm isRegister />} />
 					<Route path="/login" element={<AuthForm />} />
 					<Route path="*" element={<Notfound />} />
