@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Dashboard = ({ data, removeProduct }) => {
+const Dashboard = ({ data }) => {
 	console.log(data);
 	return (
 		<div>
@@ -29,9 +29,7 @@ const Dashboard = ({ data, removeProduct }) => {
 							<td>{p.description || "Dang cap nhat"}</td>
 							<td>{p.thumbnail ? <img src={p.thumbnail} alt="Dang cap nhat" /> : "Dang cap nhat"}</td>
 							<td>
-								<button onClick={() => removeProduct(p.id)} className="btn btn-danger">
-									Delete
-								</button>
+								<button className="btn btn-danger">Delete</button>
 								<Link to={`/admin/product-edit/${p.id}`} className="btn btn-warning">
 									Edit
 								</Link>

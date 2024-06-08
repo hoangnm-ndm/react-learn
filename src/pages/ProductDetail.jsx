@@ -4,12 +4,12 @@ import instance from "../axios";
 
 const ProductDetail = () => {
 	const { id } = useParams();
-	const [p, setP] = useState({});
+	const [product, setProduct] = useState({});
 	useEffect(() => {
 		(async () => {
 			try {
 				const { data } = await instance.get(`/products/${id}`);
-				setP(data);
+				setProduct(data);
 			} catch (error) {
 				console.log(error);
 			}
@@ -18,8 +18,8 @@ const ProductDetail = () => {
 	return (
 		<div>
 			<h1>Product Detail</h1>
-			<img src={p.thumbnail} alt="" />
-			<h1>{p.title}</h1>
+			<img src={product.thumbnail} alt="" />
+			<h1>{product.title}</h1>
 		</div>
 	);
 };

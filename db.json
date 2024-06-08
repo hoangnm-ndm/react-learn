@@ -2,7 +2,7 @@
   "products": [
     {
       "id": 1,
-      "title": "sdssddsiPhone jjj",
+      "title": "iPhone 100",
       "description": "An apple mobile which is nothing like apple",
       "price": 549,
       "discountPercentage": 12.96,
@@ -21,7 +21,7 @@
     },
     {
       "id": 2,
-      "title": "iPhone 10",
+      "title": "iPhone XX",
       "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
       "price": 899,
       "discountPercentage": 17.94,
@@ -602,6 +602,12 @@
       "email": "hoang1@gmail.com",
       "password": "$2a$10$76JqqoGWbnjVO/UBtqGVbOupYp.p4dUu3uARMshfoGZyAOPR8C752",
       "id": 2
+    },
+    {
+      "email": "hoangnm@gmail.com",
+      "password": "$2a$10$APFoxT08siRxFEbOhYTZbuj5sVB1SzW9zKLF.HNJi2829HydhqR8W",
+      "confirmPass": "111111",
+      "id": 3
     }
   ]
 }

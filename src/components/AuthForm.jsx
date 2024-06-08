@@ -1,41 +1,39 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
-import instance from "../axios";
 import { useNavigate } from "react-router-dom";
+import instance from "../axios";
+import { schemaLogin, schemaRegister } from "../schemaValid/authSchema";
 
-const schema = z.object({
-	email: z.string().email(),
-	password: z.string().min(6),
-});
-
-const Login = () => {
+const AuthForm = ({ isRegister }) => {
 	const nav = useNavigate();
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm({ resolver: zodResolver(schema) });
-	const onSubmit = (data) => {
-		console.log(data);
-		(async () => {
-			try {
+	} = useForm({ resolver: zodResolver(isRegister ? schemaRegister : schemaLogin) });
+	const onSubmit = async (data) => {
+		try {
+			if (isRegister) {
+				await instance.post(`/register`, data);
+				if (confirm("Successfully, redirect to login page?")) {
+					nav("/login");
+				}
+			} else {
 				const res = await instance.post(`/login`, data);
 				localStorage.setItem("user", JSON.stringify(res.data));
 				if (confirm("Successfully, redirect to home page?")) {
 					nav("/");
 				}
-			} catch (error) {
-				console.log(error);
-				alert(error.response.data || "Login failed");
 			}
-		})();
+		} catch (error) {
+			alert(error.response.data || "Failed");
+		}
 	};
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<h1>Login</h1>
+				<h1>{isRegister ? "Register" : "Login"}</h1>
 				<div className="mb-3">
 					<label htmlFor="email" className="form-label">
 						email
@@ -52,9 +50,19 @@ const Login = () => {
 					{errors.password && <p className="text-danger">{errors.password.message}</p>}
 				</div>
 
+				{isRegister && (
+					<div className="mb-3">
+						<label htmlFor="confirmPass" className="form-label">
+							Confirm password
+						</label>
+						<input className="form-control" type="password" {...register("confirmPass")} />
+						{errors.confirmPass && <p className="text-danger">{errors.confirmPass.message}</p>}
+					</div>
+				)}
+
 				<div className="mb-3">
 					<button type="submit" className="btn btn-primary w-100">
-						Submit
+						{isRegister ? "Register" : "Login"}
 					</button>
 				</div>
 			</form>
@@ -62,4 +70,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default AuthForm;
