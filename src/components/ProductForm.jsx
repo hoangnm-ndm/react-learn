@@ -1,11 +1,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import productSchema from "../schemaValid/productSchema";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import instance from "../axios";
+import { ProductContext } from "../contexts/ProductContext";
 
-const ProductForm = ({ onSubmit }) => {
+const ProductForm = () => {
+	const { dispatch } = useContext(ProductContext);
 	const { id } = useParams();
+
+	const nav = useNavigate();
 	const {
 		register,
 		handleSubmit,
@@ -23,6 +28,23 @@ const ProductForm = ({ onSubmit }) => {
 			})();
 		}, [id]);
 	}
+
+	const onSubmit = async (data) => {
+		try {
+			if (id) {
+				await instance.patch(`/products/${id}`, data);
+				dispatch({ type: "EDIT_PRODUCT", payload: { id, ...data } });
+			} else {
+				const res = await instance.post(`/products`, data);
+				dispatch({ type: "ADD_PRODUCT", payload: res.data });
+			}
+			if (confirm("Successfully, redirect to admin page!")) {
+				nav("/admin");
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div>

@@ -2,9 +2,9 @@
   "products": [
     {
       "id": 1,
-      "title": "iPhone 100",
+      "title": "iPhone 100000",
       "description": "An apple mobile which is nothing like apple",
-      "price": 549,
+      "price": 549000,
       "discountPercentage": 12.96,
       "rating": 4.69,
       "stock": 94,
@@ -144,25 +144,6 @@
       ]
     },
     {
-      "id": 9,
-      "title": "Infinix INBOOK",
-      "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-      "price": 1099,
-      "discountPercentage": 11.83,
-      "rating": 4.54,
-      "stock": 96,
-      "brand": "Infinix",
-      "category": "laptops",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/9/1.jpg",
-        "https://cdn.dummyjson.com/product-images/9/2.png",
-        "https://cdn.dummyjson.com/product-images/9/3.png",
-        "https://cdn.dummyjson.com/product-images/9/4.jpg",
-        "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
-      ]
-    },
-    {
       "id": 10,
       "title": "HP Pavilion 15-DK1056WM",
       "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
@@ -200,9 +181,9 @@
     },
     {
       "id": 12,
-      "title": "Brown Perfume",
+      "title": "Brown Perfume update",
       "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
-      "price": 40,
+      "price": 40000,
       "discountPercentage": 15.66,
       "rating": 4,
       "stock": 52,
@@ -590,6 +571,12 @@
     },
     {
       "id": 37
+    },
+    {
+      "title": "them san pham moi",
+      "price": 10000,
+      "description": "mo ta",
+      "id": 38
     }
   ],
   "users": [
@@ -608,6 +595,12 @@
       "password": "$2a$10$APFoxT08siRxFEbOhYTZbuj5sVB1SzW9zKLF.HNJi2829HydhqR8W",
       "confirmPass": "111111",
       "id": 3
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$hqyOYG9ZtYC/r9McmHvP9.7oaP1..Co9xwo9KzynwoxQ6dqBBhFne",
+      "confirmPass": "111111",
+      "id": 4
     }
   ]
 }

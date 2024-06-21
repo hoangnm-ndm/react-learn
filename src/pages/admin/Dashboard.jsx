@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../../contexts/ProductContext";
+import instance from "../../axios";
 
-const Dashboard = ({ data }) => {
-	console.log(data);
+const Dashboard = () => {
+	const { state, dispatch } = useContext(ProductContext);
+
+	const hanldeDelete = async (id) => {
+		try {
+			if (confirm("Are you sure?")) {
+				await instance.delete(`/products/${id}`);
+				dispatch({ type: "DELETE_PRODUCT", payload: id });
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<div>
 			<h1>Hello, admin</h1>
@@ -21,7 +35,7 @@ const Dashboard = ({ data }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{data.map((p) => (
+					{state.products.map((p) => (
 						<tr key={p.id}>
 							<td>{p.id}</td>
 							<td>{p.title}</td>
@@ -29,7 +43,9 @@ const Dashboard = ({ data }) => {
 							<td>{p.description || "Dang cap nhat"}</td>
 							<td>{p.thumbnail ? <img src={p.thumbnail} alt="Dang cap nhat" /> : "Dang cap nhat"}</td>
 							<td>
-								<button className="btn btn-danger">Delete</button>
+								<button className="btn btn-danger" onClick={() => hanldeDelete(p.id)}>
+									Delete
+								</button>
 								<Link to={`/admin/product-edit/${p.id}`} className="btn btn-warning">
 									Edit
 								</Link>
