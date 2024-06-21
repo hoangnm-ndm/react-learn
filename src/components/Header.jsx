@@ -19,6 +19,9 @@ export default function Header() {
 				<li>
 					<Link to="/register">Register</Link>
 				</li>
+				<li>
+					<Link to="/admin">Bạn là admin?</Link>
+				</li>
 			</ul>
 		</header>
 	);

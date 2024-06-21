@@ -7,14 +7,10 @@ const ProductDetail = () => {
 	const [product, setProduct] = useState({});
 	useEffect(() => {
 		(async () => {
-			try {
-				const { data } = await instance.get(`/products/${id}`);
-				setProduct(data);
-			} catch (error) {
-				console.log(error);
-			}
+			const { data } = await instance.get(`/products/${id}`);
+			setProduct(data);
 		})();
-	}, []);
+	}, [id]);
 	return (
 		<div>
 			<h1>Product Detail</h1>

@@ -1,12 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import instance from "../axios";
 import { schemaLogin, schemaRegister } from "../schemaValid/authSchema";
+import { AuthContext } from "../contexts/AuthContext";
 
 const AuthForm = ({ isRegister }) => {
 	const nav = useNavigate();
+	const { login, register: registerUser } = useContext(AuthContext);
 	const {
 		register,
 		handleSubmit,
@@ -15,16 +16,11 @@ const AuthForm = ({ isRegister }) => {
 	const onSubmit = async (data) => {
 		try {
 			if (isRegister) {
-				await instance.post(`/register`, data);
-				if (confirm("Successfully, redirect to login page?")) {
-					nav("/login");
-				}
+				await registerUser(data.email, data.password);
+				if (confirm("Successfully, redirect to login page?")) nav("/login");
 			} else {
-				const res = await instance.post(`/login`, data);
-				localStorage.setItem("user", JSON.stringify(res.data));
-				if (confirm("Successfully, redirect to home page?")) {
-					nav("/");
-				}
+				await login(data.email, data.password);
+				if (confirm("Successfully, redirect to admin page?")) nav("/");
 			}
 		} catch (error) {
 			alert(error.response.data || "Failed");

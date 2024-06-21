@@ -5,15 +5,16 @@ const instance = axios.create({
 	timeout: 3000,
 	headers: {
 		"Content-Type": "application/json",
+		"Access-Control-Allow-Origin": "*",
 	},
 });
 
-export const getProducts = async () => {
-	try {
-		const { data } = await instance.get("/products");
-		return data;
-	} catch (error) {
-		console.log(error);
+instance.interceptors.request.use((config) => {
+	const token = localStorage.getItem("token");
+	if (token) {
+		config.headers.Authorization = `Bearer ${token}`;
 	}
-};
+	return config;
+});
+
 export default instance;
