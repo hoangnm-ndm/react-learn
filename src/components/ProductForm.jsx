@@ -17,9 +17,6 @@ const ProductForm = () => {
 	// State để lưu trữ lựa chọn của người dùng
 	const [thumbnailOption, setThumbnailOption] = useState("keep");
 
-	// State lưu trữ link ảnh từ bên ngoài
-	const [linkOnlineImage, setLinkOnlineImage] = useState("");
-
 	const {
 		register,
 		handleSubmit,
@@ -57,10 +54,10 @@ const ProductForm = () => {
 	const onSubmit = async (product) => {
 		try {
 			let updatedProduct = { ...product };
-			// Kiểm tra lựa chọn của người dùng và xử lý tương ứng
+			// Kiểm tra lựa chọn của admin và xử lý tương ứng
 			switch (thumbnailOption) {
 				case "upload":
-					// Xử lý upload ảnh từ local
+					// Xử lý upload ảnh nếu admin chọn upload từ local
 					if (product.thumbnail && product.thumbnail[0]) {
 						const thumbnailUrl = await uploadImage(product.thumbnail[0]);
 						updatedProduct = { ...updatedProduct, thumbnail: thumbnailUrl };
@@ -117,16 +114,6 @@ const ProductForm = () => {
 					<input type="text" className="form-control" id="description" {...register("description")} />
 					{errors.description?.message && <p className="text-danger">{errors.description?.message}</p>}
 				</div>
-				{/* <div className="mb-3">
-					<label htmlFor="thumbnail" className="form-label">
-						Thumbnail
-					</label>
-					<input type="file" className="form-control" id="thumbnail" {...register("thumbnail")} />
-					{errors.thumbnail?.message && <p className="text-danger">{errors.thumbnail?.message}</p>}
-					{thumbnailUrl && (
-						<img src={thumbnailUrl} alt="Product Thumbnail" style={{ maxWidth: "200px", marginTop: "10px" }} />
-					)}
-				</div> */}
 
 				<div className="mb-3">
 					<label htmlFor="thumbnailOption" className="form-label">
@@ -144,31 +131,22 @@ const ProductForm = () => {
 					</select>
 				</div>
 
-				{thumbnailOption === "link" && (
-					<div className="mb-3">
-						<label htmlFor="thumbnail" className="form-label">
-							Thumbnail
-						</label>
+				<div className="mb-3">
+					<label htmlFor="thumbnail" className="form-label">
+						Thumbnail
+					</label>
+					{thumbnailOption === "link" && (
 						<input type="text" className="form-control" id="thumbnail" {...register("thumbnail")} />
-						{errors.thumbnail?.message && <p className="text-danger">{errors.thumbnail?.message}</p>}
-						{thumbnailUrl && (
-							<img src={thumbnailUrl} alt="Product Thumbnail" style={{ maxWidth: "200px", marginTop: "10px" }} />
-						)}
-					</div>
-				)}
+					)}
+					{thumbnailOption === "upload" && (
+						<input type="file" className="form-control" id="thumbnail" {...register("thumbnail", { required: true })} />
+					)}
+					{errors.thumbnail?.message && <p className="text-danger">{errors.thumbnail?.message}</p>}
+					{thumbnailUrl && (
+						<img src={thumbnailUrl} alt="Product Thumbnail" style={{ maxWidth: "200px", marginTop: "10px" }} />
+					)}
+				</div>
 
-				{thumbnailOption === "upload" && (
-					<div className="mb-3">
-						<label htmlFor="thumbnail" className="form-label">
-							Thumbnail
-						</label>
-						<input type="file" className="form-control" id="thumbnail" {...register("thumbnail")} />
-						{errors.thumbnail?.message && <p className="text-danger">{errors.thumbnail?.message}</p>}
-						{thumbnailUrl && (
-							<img src={thumbnailUrl} alt="Product Thumbnail" style={{ maxWidth: "200px", marginTop: "10px" }} />
-						)}
-					</div>
-				)}
 				<div className="mb-3">
 					<button className="btn btn-primary w-100" type="submit">
 						{id ? "Edit" : "Add"} product
