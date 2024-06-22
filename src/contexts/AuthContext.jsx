@@ -10,7 +10,6 @@ const AuthContextProvider = ({ children }) => {
 	useEffect(() => {
 		const checkAuth = async () => {
 			const token = localStorage.getItem("token");
-
 			if (token) {
 				try {
 					// Dùng cách này khi đã có api/endpoint để kiểm tra token
@@ -21,12 +20,12 @@ const AuthContextProvider = ({ children }) => {
 					// });
 
 					// Dùng cách này khi chưa có api/endpoint để kiểm tra token
-					const { data } = await instance.get("/660/users/1", {
+					const { data } = await instance.get("/660/users/4", {
 						headers: {
-							Authorization: `Bearer ${token}`,
+							Authorization: `Bear ${token}`,
 						},
 					});
-					console.log(data);
+
 					setUser(data);
 					setIsAuthenticated(true);
 				} catch (error) {
@@ -42,7 +41,7 @@ const AuthContextProvider = ({ children }) => {
 	const login = async (email, password) => {
 		try {
 			const { data } = await instance.post("/login", { email, password });
-			localStorage.setItem("token", data.token);
+			localStorage.setItem("token", data.accessToken);
 			setUser(data.user);
 			setIsAuthenticated(true);
 		} catch (error) {
