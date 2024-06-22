@@ -65,7 +65,8 @@ const ProductForm = () => {
 					break;
 				default:
 				// Giữ nguyên ảnh cũ khi không thay đổi
-				// Hoặc mặc định khi người dùng chọn "link online"
+				// Hoặc mặc định khi người dùng chọn "link ảnh online"
+				// Tôi sử dụng switch case để dễ mở rộng cho các tình huống trong tương lai
 			}
 
 			if (id) {
