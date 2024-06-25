@@ -4,7 +4,7 @@
       "title": "san pham moi",
       "price": 20000,
       "description": "An apple mobile which is nothing like apple",
-      "thumbnail": "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcTeyKTG0Gfx42-5Snmu1-18eMPpuY-s4-Mmu12Xl-uC25VGZbk465RUbHKhJnnL8ajf",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAY0GcwNBL7sai0QNDz43SxPA1v8tLmkvLealZoQoNupZtWB17",
       "id": 1
     },
     {
@@ -842,22 +842,6 @@
     }
   ],
   "users": [
-    {
-      "email": "hoang@gmail.com",
-      "password": "$2a$10$ZoYrwhQfWDmequFLoamvROO2Y7PJF0d15PwVhCBec4hU5MJNrwyZ2",
-      "id": 1
-    },
-    {
-      "email": "hoang1@gmail.com",
-      "password": "$2a$10$76JqqoGWbnjVO/UBtqGVbOupYp.p4dUu3uARMshfoGZyAOPR8C752",
-      "id": 2
-    },
-    {
-      "email": "hoangnm@gmail.com",
-      "password": "$2a$10$APFoxT08siRxFEbOhYTZbuj5sVB1SzW9zKLF.HNJi2829HydhqR8W",
-      "confirmPass": "111111",
-      "id": 3
-    },
     {
       "email": "admin@gmail.com",
       "password": "$2a$10$DG7zy6KbLZlO0sBhtrigZuwpRh/2ww2c1QlEPD0DkRzA0jHxV5BRO",
